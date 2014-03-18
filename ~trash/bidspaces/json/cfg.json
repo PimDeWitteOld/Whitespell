@@ -1,0 +1,45 @@
+{
+    "components" :   {
+
+        "nav" : {
+            "id" : 1,
+            "remote_url" : "{@this}/nav/leftpane.html",
+            "position" : "application"
+        },
+        "app_main" : {
+            "id" : 2,
+            "remote_url" : "{@this}/home/home.html",
+            "position" : "application",
+            "history"   :   true
+        }
+
+    },
+
+    "updates" :   {
+        "messages" : {
+                "id" : 1001,
+                "is_update_of_component" : 3,
+                "remote_url" : "{@this}/body/message.html"
+        },
+        "login" : {
+                "id" : 1004,
+                "is_update_of_component" : 3,
+                "remote_url" : "{@this}/body/login.html"
+        },
+        "board" : {
+                "id" : 1005,
+                "is_update_of_component" : 3,
+                "remote_url" : "{@this}/body/board.html"
+        },
+        "home" : {
+                "id" : 1006,
+                "is_update_of_component" : 3,
+                "remote_url" : "{@this}/home/home.html"
+        },
+        "messageInterface" : {
+                "id" : 1007,
+                "is_update_of_component" : 3,
+                "remote_url" : "{@this}/body/messageInterface.html"
+        }
+    }
+}

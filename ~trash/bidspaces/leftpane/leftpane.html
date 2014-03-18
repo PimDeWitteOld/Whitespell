@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="{@this}/leftpane/leftpane.css"/>
+
+<div class="snap-drawers">
+    <div class="snap-drawer snap-drawer-left">
+        <div>
+            <div class="search">
+                <input type="text" id="search" class="focusOnTap" placeholder="Search for Things">
+            </div>
+            <div class="drawer-inner">
+                <h4>General Options</h4>
+                <ul>
+                    <li><a class="loadPage" data-load="login">Feed</a></li>
+                    <li><a>InTouch</a></li>
+                    <li><a>Overlays</a></li>
+                    <li><a>Settings</a></li>
+                </ul>
+
+
+                <div>
+                    <p>Thank you for what you are doing!</p>
+                    <p>HICS Comes AS IS, no warranty is given, and the use of this software is entirely at your own risk</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script id="{{included_js}}">
+
+   /* whitespell.snapper = new Snap({
+        element: document.getElementById('application'),
+        disable: 'right'
+    });*/
+
+
+    var gestures = {
+
+
+
+        unique: { // ids
+
+
+
+
+        },
+
+        collective: { //classes
+
+            "focusOnTap" : {
+                touch: function(el) {
+                    el.focus();
+                }
+            },
+            "loadPage" : {
+                release: function(el) {
+
+                    whitespell.layout.updateComponentContent("body", el.getAttribute("data-load")); // add transition support for cool css transitions
+                console.log("Loading update");
+                }
+            }
+
+        }
+    }
+
+    whitespell.ui.addGestures("{{componentName}}", gestures);
+
+</script>

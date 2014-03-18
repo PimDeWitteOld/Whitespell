@@ -1,0 +1,81 @@
+::selection {
+    background: transparent;
+
+}
+
+
+.loginButton {
+    margin-top: 5px;
+    display:inline-block;
+
+}
+
+.loginHeaderText {
+    padding-top:20px;
+    color: #f3f3f3;
+    font-size: 2em;
+    padding-bottom:10px;
+}
+.tosText {
+    margin-top: 5px;
+    clear: both;
+    color: #f3f3f3;
+}
+
+.loginBox {
+    z-index:2147000001;
+    margin: 100px auto;
+    width: 400px;
+    height: 400px;
+    padding: 30px;
+    background-color:rgba(50,50,50,0.348039);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 6px #212121;
+    -moz-box-shadow: 0 0 6px #212121;
+    box-shadow: 0 0 6px #212121;
+}
+
+
+.username, .username:active, .username:focus {
+    margin-top: 10px;
+    width: 95%;
+    height: 50px;
+    background-color: #ffffff;
+    border: 0;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+    text-align: center;
+}
+
+.password, .password:active, .password:focus {
+    background-color: #FFFFFF;
+    border-top: 1px solid #e8e8e8;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    width: 95%;
+    height: 50px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+
+}
+
+.submitButton {
+    height: 60px;
+}
+
+.loginText #submit {
+
+}

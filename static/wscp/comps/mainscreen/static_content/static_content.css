@@ -1,0 +1,25 @@
+#static_content{
+    height:inherit;
+    width:inherit;
+    animation:fadeIn 500ms;
+    -webkit-animation:fadeIn 500ms;
+}
+#editor {
+    margin-left: 200px;
+    margin-top: 26px;
+    min-height: 100%;
+    border-top:1px solid #212121;
+
+}
+
+.staticComponent {
+    background-color:rgba(230,230,230,0.848039);
+    width: 31%;
+    margin-left: 1%;
+    margin-top: 1%;
+    width: 250px;
+    display: inline-block;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}

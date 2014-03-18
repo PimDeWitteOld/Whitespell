@@ -1,0 +1,82 @@
+#mainscreen {
+
+
+}
+
+.mainscreenContainer {
+
+}
+
+#MovableMainScreenContent {
+margin-left: 200px;
+    margin-top: 50px;
+    color: white;
+    animation:fadeIn 500ms;
+    -webkit-animation:fadeIn 500ms;
+}
+
+.mainscreenApps {
+    background-color:rgba(230,230,230,0.848039);
+    width: 31%;
+    margin-left: 1%;
+    margin-top: 1%;
+    width: 250px;
+    display: inline-block;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.AppName {
+    background-color:rgba(50,50,50,0.88039);
+    width: 100%;
+    color: #f3f3f3;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-bottom: 1px solid #404040;
+
+}
+
+
+
+.AppOption {
+    float: right;
+    height: 50px;
+    width: 50px;
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
+    border-left: 1px solid #e8e8e8;
+}
+
+.appStatics {
+    background: url({@this}/img/mainscreenapps/statics.png) center center no-repeat;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.appTasks {
+    background: url({@this}/img/mainscreenapps/tasks.png) center center no-repeat;
+    border-bottom: 1px solid #e8e8e8;
+}
+.appGraphs {
+    background: url({@this}/img/mainscreenapps/graphs.png) center center no-repeat;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+
+.appBuilds {
+    background: url({@this}/img/mainscreenapps/build.png) center center no-repeat;
+}
+
+.appPreview{
+    float: left;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    color: #212121;
+}

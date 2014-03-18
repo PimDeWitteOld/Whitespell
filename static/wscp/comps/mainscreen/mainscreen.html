@@ -1,0 +1,20 @@
+<div class="mainscreenContainer">
+    <div id="MovableMainScreenContent">
+        <var name="$apps" update="addAfter">
+            <div class="mainscreenApps">
+                <div class="AppName">{name}</div>
+                <div class="friendsList">
+                    <foreach array="friendsonline" identifier="i">
+                        <div class="onlineFriend">
+                            <div class="friendName">{i.name} </div>
+                        </div>
+                    </foreach>
+                </div>
+                <div class="AppOption appStatics" data-load="static_content"></div>
+                <div class="AppOption appTasks"></div>
+                <div class="AppOption appGraphs"></div>
+                <div class="AppOption appBuilds"></div>
+            </div>
+        </var>
+    </div>
+</div>

@@ -1,0 +1,241 @@
+<style>
+    .content {
+        margin-top: 55px;
+        width: 100%;
+    }
+
+    #messageInterface {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #f3f3f3;
+        overflow: auto;
+        min-width: 320px;
+        animation:slideInLeft 350ms;
+        -webkit-animation:slideInLeft 350ms;
+    }
+
+    ._me {
+        float: right;
+        margin-right: 10px;
+    }
+
+    ._other {
+        float: left;
+        margin-left: 10px;
+    }
+
+    .newMessage {
+        margin-top: 10px;
+        width: 100%;
+        border-bottom: 1px solid #212121;
+        text-align: center;
+    }
+
+    .newMessage .message {
+        min-height: 30px;
+    }
+
+    .newMessage .from_number {
+        min-height: 30px;
+    }
+
+    .replyMessage, .replymessage:active, .replyMessage:hover, .replyMessage:enabled {
+        width: 100%;
+        min-height: 100px;
+        font-size: 1em;
+        margin-top: 30px;
+        padding:0;
+        left:0;
+        top:0;
+    }
+    .sendButton, .cancelButton {
+        width: 48%;
+        min-height: 50px;
+        border: 1px solid #212121;
+        background: #414141;
+        border-radius: 5px;
+        color: #f3f3f3;
+        margin-top: 10px;
+        margin-left: 1%;
+        text-align: center;
+        line-height: 50px;
+        font-size: 1.4em;
+        display: inline-block;
+    }
+
+    .buttonPlaceHolder {
+        width: 100%;
+        text-align: center;
+        height: 50px;
+    }
+
+    .loadMore {
+        width: 100%;
+        height: 50px;
+        background: #f3f3f3;
+        line-height: 50px;
+        text-align: center;
+        border-bottom: 1px solid #e8e8e8;
+
+    }
+
+
+    .updates {
+        width: 100%;
+        margin-top: 50px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        -webkit-transition: width 0.3s ease;
+        -moz-transition: width 0.3s ease;
+        -ms-transition: width 0.3s ease;
+        -o-transition: width 0.3s ease;
+        transition: width 0.3s ease;
+    }
+
+
+    .update {
+        margin-top: 10px;
+        position:relative;
+        width: 50%;
+        clear: both;
+        animation:fadeIn 1000ms;
+        -webkit-animation:fadeIn 1000ms;
+        min-height: 50px;
+        min-width: 180px;
+    }
+
+    @media all and (max-width: 750px) {
+        #map-canvas {
+            display: none;
+        }
+
+        #feed {
+            width: 100%;
+            min-width: 250px;
+        }
+    }
+
+    @media all and (max-width: 550px) {
+        .update {
+            width: 90%;
+            min-width: 320px;
+        }
+    }
+
+    .update .updatePic{
+        margin: 10px 10px;
+        border-radius:50px;
+        width: 15%;
+        max-width: 50px;
+        background: red;
+        border: 1px solid #212121;
+    }
+
+    .update .updateDetails {
+        padding-top: 1%;
+        font-size: 1.4em;
+        height: 50px;
+        max-width: 200px;
+        background: #f6f6f6;
+        border: 1px solid #e8e8e8;
+    }
+
+    .update .updateText {
+        clear: both;
+        font-size: 1.2em;
+
+    }
+
+    .update .updateTime {
+        font-size: 0.8em;
+    }
+
+    .update .updateButton {
+        background: #f6f6f6;
+        width: 50%;
+        float: left;
+        min-height: 30px;
+        line-height: 30px;
+        text-align: center;
+
+    }
+
+    .update .updateButtons {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width: 100%;
+        clear: both;
+        min-height: 30px;
+        border-top: 1px solid #e8e8e8;
+
+    }
+
+    .messageArea {
+        width: 90%;
+        padding: 3%;
+        min-height: 100px;
+        background: #f6f6f6;
+        border-top: 1px solid #e8e8e8;
+        float: left;
+    }
+
+</style>
+
+<div class="content">
+    <div class="loadMore">Load More....</div>
+<var name="$messages" update="addAfter">
+    <div class="update {who}" id="{identifier1}">
+        <img class="updatePic {who}" src="{img}"/>
+        <div class="updateDetails {who}">{from}
+            <div class="updateTime {who}">{time} from <span data-lat="{lat}" data-lng="{lng}" class="jumpToLoc">{location}</span></div>
+        </div>
+
+        <div class="updateText {who}">"{message}"</div>
+
+    </div>
+</var>
+    </div>
+
+<div class="messageArea">
+    <textarea class="replyMessage" type="text" placeholder="Enter your message"></textarea>
+    <div class="buttonPlaceHolder">
+        <div class="sendButton">Send Message</div>
+    </div>
+</div>
+
+<script id="{{included_js}}">
+
+    function loadInterface() {
+
+
+
+    }
+    loadInterface();
+
+    var number = C.get(globals["messageMem"], "ViewingMessage", "currentMessage");
+
+   /* whitespell.workers.assign("xmr", {
+        task    :   "request",
+        params  :   {
+            url:    "http://192.168.1.13:8040/getmessages?from_number="+number+"&limit=5"
+        }
+    }, function(data) {
+        var json = JSON.parse(data);
+        for(var msg in json.lastMessages) {
+
+        w$("$messages", {
+            "who"   :   (Math.random() > Math.random() ? "_me" : "_other"),
+           "from"   : number,
+            "message"   :   json.lastMessages[msg].message
+        });
+        }
+
+    });*/
+
+    //whitespell.ui.addGestures("{{componentName}}", gestures);
+
+    </script>

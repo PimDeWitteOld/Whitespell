@@ -1,0 +1,20 @@
+{
+    "samples" : {
+        "5" : {
+            "name" : "Contol Panel",
+            "icon" : "{@this}/img/50x50_ico.png"
+        },
+        "6" : {
+            "name" : "BidSpaces",
+            "icon" : "{@this}/img/50x50_ico.png"
+        },
+        "7" : {
+            "name" : "Geochat",
+            "icon" : "{@this}/img/50x50_ico.png"
+        },
+        "8" : {
+            "name" : "Geeklist",
+            "icon" : "{@this}/img/50x50_ico.png"
+        }
+    }
+}

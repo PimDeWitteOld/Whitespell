@@ -1,0 +1,11 @@
+.collaborators{
+    position:absolute;
+    width: 150px;
+    background: #212121;
+    height:30px;
+    text-align:center;
+    line-height:30px;
+    color:#f3f3f3;
+    bottom:0;
+    right:0;
+}

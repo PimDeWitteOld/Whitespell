@@ -1,0 +1,5 @@
+Do not forget to also put the following content in the index.html file, to make it compatible with older mobile phones that do not support read from URL.
+
+<script id="xmr">
+//script content
+</script>

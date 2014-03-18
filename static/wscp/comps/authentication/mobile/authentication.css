@@ -1,0 +1,86 @@
+::selection {
+    background: transparent;
+
+}
+
+
+
+.login {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    z-index:1;
+    -webkit-transform: translate3d(0,0,0);
+    background: #212121;
+
+}
+
+
+.loginButton {
+    margin-top: 5px;
+    display:inline-block;
+
+}
+
+.loginHeaderText {
+    padding-top:20px;
+    color: #f3f3f3;
+    font-size: 2em;
+    padding-bottom:10px;
+}
+.tosText {
+    margin-top: 5px;
+    clear: both;
+    color: #f3f3f3;
+}
+
+.loginBox {
+    margin: 50px auto;
+    width: 100%;
+    height: 400px;
+
+    text-align: center;
+
+}
+
+
+.username, .username:active, .username:focus {
+    margin-top: 10px;
+    width: 95%;
+    height: 50px;
+    background-color: #ffffff;
+    border: 0;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+    text-align: center;
+}
+
+.password, .password:active, .password:focus {
+    background-color: #FFFFFF;
+    border-top: 1px solid #e8e8e8;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    width: 95%;
+    height: 50px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+
+}
+
+.submitButton {
+    height: 60px;
+}
+
+.loginText #submit {
+
+}

@@ -1,0 +1,31 @@
+<div id="leftPopout">
+    <ul id="leftPopoutList">
+
+        <li class="popoutOption category" style="border-top: 1px solid #404040;"><img class="popoutImage" src="{@this}/img/settings/privacy.png"/><div class="popoutText">MY ACCOUNT</div></li>
+        <li class="popoutOption"><img class="popoutImage" src="{@this}/img/settings/privacy.png"/><div class="popoutText"><var name="$username" update="replace">{value}</var></div></li>
+
+
+        <var name="$leftPopoutApps" update="addAfter">
+            <li class="popoutOption category"><img class="popoutImage" src="{@this}/img/minimize.png"/><div class="popoutText">{name}</div></li>
+            <div class="appOptionFolder" id="appfolder-{id}">
+                <li class="popoutOption loadPage" data-load="static_content"><img class="popoutImage" src="{@this}/img/apps/static_content2.png"/><div class="popoutText">Static Content</div></li>
+                <li class="popoutOption loadPage" data-load="static_content"><img class="popoutImage" src="{@this}/img/apps/intelligence.png"/><div class="popoutText">Intelligence</div></li>
+                <li class="popoutOption loadPage" data-load="static_content"><img class="popoutImage" src="{@this}/img/apps/deployment.png"/><div class="popoutText">Deployment</div></li>
+                <li class="popoutOption loadPage" data-load="static_content"><img class="popoutImage" src="{@this}/img/apps/graphs.png"/><div class="popoutText">Analytics</div></li>
+                <li class="popoutOption loadPage" data-load="static_content"><img class="popoutImage" src="{@this}/img/apps/users.png"/><div class="popoutText">Users</div></li>
+                <li class="popoutOption loadPage" data-load="static_content"><img class="popoutImage" src="{@this}/img/apps/settings.png"/><div class="popoutText">Settings</div></li>
+            </div>
+        </var>
+        <li class="popoutOption category"><img class="popoutImage" src="{@this}/img/apps/db.png"/><div class="popoutText">DATABASES</div></li>
+        <li class="popoutOption app"><div class="underText">WhiteSpell (Internal)</div></li>
+        <li class="popoutOption app"><div class="underText">Status.ph (External)</div></li>
+        <li class="popoutOption category"><img class="popoutImage" src="{@this}/img/email/unread.png"/><div class="popoutText">BILLING</div></li>
+        <li class="popoutOption category"><img class="popoutImage" src="{@this}/img/ecommerce/market.png"/><div class="popoutText">My Marketplace</div></li>
+        <li class="popoutOption"><div class="underText">Dashboard</div></li>
+        <li class="popoutOption"><div class="underText">My Code</div></li>
+        <li class="popoutOption"><div class="underText">Browse</div></li>
+
+        <li class="popoutOption category"><img class="popoutImage" src="{@this}/img/logout/logout.png"/><div class="popoutText">LOGOUT</div></li>
+  </ul>
+
+</div>

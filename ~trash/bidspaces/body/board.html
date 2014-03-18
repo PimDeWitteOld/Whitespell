@@ -1,0 +1,563 @@
+<style>
+    #map_wrapper {
+        position:fixed;
+        left:50%; top: 0; width: 50%; height: 100%;
+        animation:fadeIn 2000ms;
+        -webkit-animation:fadeIn 2000ms;
+        background: #212121;
+        z-index:4;
+    }
+
+    #map_content {
+        width: 100%;
+        height: 100%;
+    }
+    #map-canvas {
+        width: 100%;
+        height: 100%;
+    }
+    #feed { position:absolute; left: 0; top: 0; width: 50%; height: 100%; min-width: 320px;}
+
+    #app_main {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .buttonContainer {
+        height: 40px;
+        position:fixed;
+        z-index: 5;
+        width: 100%;
+        top: 50px;
+        left: 0;
+        display: none;
+        opacity: 0.9;
+    }
+
+    .interfaceToggle {
+        width: 50%;
+        -webkit-box-shadow: inset 0px 0px 50px 2px rgba(50, 50, 50, 0.05);
+        -moz-box-shadow:    inset 0px 0px 50px 2px rgba(50, 50, 50, 0.05);
+        box-shadow:         inset 0px 0px 50px 2px rgba(50, 50, 50, 0.05);
+        -moz-box-sizing:    border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing:        border-box;
+        height: 100%;
+        background: #f1f1f1;
+        float: left;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    .leftButton {
+        border-right: 1px solid darkgray;
+        background: #212121;
+        color: #f3f3f3;
+    }
+
+    .updateWrapper {
+        width:100%;
+        margin-top: 50px;
+        -webkit-overflow-scrolling: touch;
+        -webkit-transition: width 0.3s ease;
+        -moz-transition: width 0.3s ease;
+        -ms-transition: width 0.3s ease;
+        -o-transition: width 0.3s ease;
+        transition: width 0.3s ease;
+        text-align: center;
+        margin-left: auto;
+        display: block;
+    }
+
+
+    .update {
+        position:relative;
+        width: 48%;
+        min-height: 200px;
+        min-width: 180px;
+        border: 1px solid #212121;
+        -moz-box-sizing:    border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing:        border-box;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border: 1px solid #e8e8e8;
+        -webkit-box-shadow: inset 0px 0px 25px 2px rgba(50, 50, 50, 0.4);
+        -moz-box-shadow:    inset 0px 0px 25px 2px rgba(50, 50, 50, 0.4);
+        box-shadow:         inset 0px 0px 25px 2px rgba(50, 50, 50, 0.4);
+        color: #f3f3f3;
+        text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+        display: inline-block;
+        border: 1px solid #212121;
+        float: left;
+    }
+
+    @media all and (max-width: 1040px) {
+
+        #map_wrapper {
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .buttonContainer {
+            display: block;
+            border-bottom: 1px solid #000000;
+            -webkit-box-shadow: 0 0 6px #000000;
+            -moz-box-shadow: 0 0 6px #000000;
+            box-shadow: 0 0 6px #000000;
+        }
+
+        #feed {
+            width: 100%;
+            min-width: 320px;
+        }
+
+        .updates {
+            margin-top:80px;
+        }
+        .updateWrapper {
+            margin-top:90px;
+        }
+
+
+    }
+
+
+    /* Smartphones (portrait and landscape) ----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+        .update {
+            width: 100%;
+        }
+    }
+
+    /* Smartphones (landscape) ----------- */
+    @media only screen
+    and (min-width : 321px) {
+        .update {
+            width: 100%;
+        }
+    }
+    /* Smartphones (landscape) ----------- */
+    @media only screen
+    and (min-width : 461px) {
+        .update {
+            width: 50%;
+        }
+    }
+
+    /* Smartphones (portrait) ----------- */
+    @media only screen
+    and (max-width : 320px) {
+        .update {
+            width: 100%;
+        }
+    }
+
+    /* iPads (portrait and landscape) ----------- */
+    @media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px) {
+        .update {
+            width: 50%;
+        }
+    }
+
+    /* iPads (landscape) ----------- */
+    @media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px)
+    and (orientation : landscape) {
+        .update {
+            width: 50%;
+        }
+    }
+
+    /* iPads (portrait) ----------- */
+    @media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px)
+    and (orientation : portrait) {
+        .update {
+            width: 50%;
+        }
+    }
+
+    /* Desktops and laptops ----------- */
+    @media only screen
+    and (min-width : 1224px) {
+        .update {
+            width: 50%;
+        }
+    }
+
+    /* Large screens ----------- */
+    @media only screen
+    and (min-width : 1824px) {
+        .update {
+            width: 25%;
+        }
+    }
+
+    /* iPhone 4 ----------- */
+    @media
+    only screen and (-webkit-min-device-pixel-ratio : 1.5),
+    only screen and (min-device-pixel-ratio : 1.5) {
+        .update {
+            width: 100%;
+        }
+    }
+
+
+
+
+    .update .updatePrice{
+        color: #212121;
+        font-size: 1.2em;
+        text-align: center;
+        line-height: 30px;
+        margin: 10px 10px;
+        float: left;
+        width: 15%;
+        max-width: 30px;
+        min-height: 30px;
+        background: #f3f3f3;
+        border: 1px solid #212121;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        opacity: 0.7;
+    }
+
+    .update .updateName {
+        padding-top: 1%;
+        font-size: 1.1em;
+        width: 72%;
+        float: right;
+    }
+
+    .update .updateText {
+        padding: 1%;
+        font-size: 0.9em;
+        width: 72%;
+        float: right;
+
+    }
+
+    .update .updateTime {
+        font-size: 1.1em;
+        width: 72%;
+        float: right;
+    }
+
+    .update .updateButton {
+
+        width: 50%;
+        float: left;
+        min-height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #f3f3f3;
+        text-shadow: 0 0px 0px rgba(0,0,0,0);
+        -webkit-box-shadow: inset 0px 0px 25px 2px rgba(50, 50, 50, 0.4);
+        -moz-box-shadow:    inset 0px 0px 25px 2px rgba(50, 50, 50, 0.4);
+        box-shadow:         inset 0px 0px 25px 2px rgba(50, 50, 50, 0.4);
+        -moz-box-sizing:    border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing:        border-box;
+        border: 1px solid #212121;
+
+    }
+
+    .update .updateButtons {
+        position:absolute;
+        bottom:0;
+        left:0;
+        right: 0;
+        width: 100%;
+        clear: both;
+        min-height: 30px;
+        opacity: 0.9;
+        -moz-box-sizing:    border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing:        border-box;
+        background: #212121;
+
+
+    }
+
+    .update .updateDets {
+        width: 100%;
+        min-height: 50px;
+        z-index: 4;
+        opacity: .7;
+        background: #212121;
+
+    }
+
+
+
+
+
+</style>
+    <div class="buttonContainer">
+
+        <div class="interfaceToggle leftButton" id="showList">List</div>
+        <div class="interfaceToggle" id="showMap">Map</div>
+
+    </div>
+        <div id="map_wrapper">
+            <div id="map_content">
+<div id="map-canvas"></div>
+            </div>
+            </div>
+<div id="feed">
+    <div class="updateWrapper">
+    <var name="$updates" update="addAfter">
+
+        <div class="update" id="{identifier1}" style="background-image: url({img}); background-position: center center;background-size:cover;">
+            <div class="updateDets">
+            <div class="updatePrice">{num}</div>
+            <div class="updateRating"></div>
+            <div class="updateName">{name}</div>
+            <div class="updateTime">{time} from <span data-lat="{lat}" data-lng="{lng}" class="jumpToLoc">{location}</span></div>
+
+             </div>
+
+
+            <div class="updateButtons">
+            <div class="updateContactButton updateButton" data-identifier="{identifier2}" data-contact="test">
+                Bid</div>
+            <div class="updateButton" style="moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;">Save</div>
+            </div>
+
+        </div>
+    </var>
+
+        </div>
+</div>
+
+
+<script id="{{included_js}}">
+
+    var map;
+    var infowindow;
+
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(51.843812, 5.869290),
+            zoom: 8
+        };
+
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+        infowindow = new google.maps.InfoWindow();
+    }
+    try {
+        initialize();
+    }catch(Error) {
+        console.log(Error.message);
+    }
+
+
+    var messageMem = C.addMemory("Mess");
+    globals["messageMem"] = messageMem;
+
+
+    var gestures = {
+
+        unique: { // ids
+
+
+            "showList"  :   {
+                touch: function(el) {
+                    document.getElementById("map_wrapper").style.display = "none";
+                    document.getElementById("feed").style.display = "block";
+                    document.getElementById("showList").style.background = "#212121";
+                    document.getElementById("showList").style.color = "#f3f3f3";
+                    document.getElementById("showMap").style.background = "#f3f3f3";
+                    document.getElementById("showMap").style.color = "#212121";
+                    document.getElementById("map_wrapper").style.height = "0px";
+                    google.maps.event.trigger(map,'resize');
+                    google.maps.event.trigger(map,'bounds_changed');
+
+
+                }
+            },
+
+            "showMap"  :   {
+                touch: function(el) {
+
+
+                    document.getElementById("showMap").style.background = "#212121";
+                    document.getElementById("showMap").style.color = "#f3f3f3";
+                    document.getElementById("showList").style.background = "#f3f3f3";
+                    document.getElementById("showList").style.color = "#212121";
+                    document.getElementById("feed").style.display = "none";
+                    window.setTimeout(function() {
+                    document.getElementById("map_wrapper").style.display = "block";
+                        document.getElementById("map_wrapper").style.height = "100%";
+
+                    google.maps.event.trigger(map,'resize');
+                    google.maps.event.trigger(map,'bounds_changed');
+
+                    }, 300);
+
+                }
+            }
+
+        },
+
+        collective: { //classes
+
+
+            "jumpToLoc": {
+                release: function (el) {
+
+                    map.panTo(new google.maps.LatLng(el.getAttribute("data-lat"), el.getAttribute("data-lng")));
+                    map.setZoom(8);
+                }
+            },
+
+            "toggleButton": {
+                release: function (el) {
+
+                   // whitespell.layout.updateComponentContent("body", el.getAttribute("data-load")); // add transition support for cool css transitions
+                   // whitespell.layout.updateComponentContent("body", el.getAttribute("data-load")); // add transition support for cool css transitions
+                }
+            },
+
+            "updateContactButton": {
+                release: function (el) {
+                    whitespell.layout.updateComponentContent("app_main", "messageInterface"); // add transition support for cool css transitions
+                    C.set(messageMem, "ViewingMessage", "currentMessage", el.getAttribute("data-identifier"));
+                }
+            }
+
+        }
+    }
+
+    var styleIconClass = new StyledIcon(StyledIconTypes.CLASS,{color:"#e8e8e8"});
+
+    function createMarker(element, latlng, text, html) {
+
+        var marker = new StyledMarker({
+            styleIcon:new StyledIcon(StyledIconTypes.BUBBLE,{text:text},styleIconClass),
+            position: latlng,
+            map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(html);
+            infowindow.open(map, marker);
+            //infowindow.open(map, marker);
+
+          /*  if(highlighted !== null) {
+                document.getElementById(highlighted).style.background = "#f3f3f3";
+            }
+            document.getElementById(element).style.background = "red";
+            highlighted = element;*/
+
+        });
+        return marker;
+    }
+
+
+    var cards = null;
+
+    var highlighted = null;
+
+    var markers = [];
+
+    /*whitespell.workers.assign("websocket", {
+        task    :   "connect",
+        params  : {
+            host :  "192.168.1.13",
+            "port"  : 9092
+        }
+    }, function() {
+
+
+        whitespell.workers.assign("websocket", {
+            task    :   "varListener"
+        }, function(data) {
+            console.log(data);
+            var name = "a"+Math.random();
+            w$(data.varName, {
+                "text" : data.varContent.text,
+                "name" : data.varContent.from_name + " - " + data.varContent.from_number + "",
+                "identifier1"   :   name,
+                "identifier2"   :   data.varContent.from_number,
+                "img" : "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSM20GEOvWuDyVSRr7bgylSDZui0UFTmpal3Y-T1YXQAh7oZQKuiA"
+            });
+        });
+
+
+
+    }); */
+    if(!whitespell.d.isset("$updates")) {
+
+    whitespell.workers.assign("xmr", {
+        task: "request",
+        params: {
+            url: "{@this}/json/cards.json"
+        }
+    }, function (data) {
+        cards = JSON.parse(data);
+
+        for(var update in cards.updates) {
+            var thisUpdate = cards.updates[update];
+            w$("$updates", {
+                "identifier1" : update,
+                "identifier2" : update,
+                "name"  : thisUpdate.name,
+                "num"  : update,
+                "img"  : thisUpdate.img,
+                "lat"  : thisUpdate.lat,
+                "lng"  : thisUpdate.lng,
+                "time"  : thisUpdate.time,
+                "location"  : thisUpdate.location
+            }, update);
+
+            if(thisUpdate.lat !== undefined) {
+                try {
+                    createMarker(update, new google.maps.LatLng(thisUpdate.lat, thisUpdate.lng), update + ": " + thisUpdate.name, '<div class="update" id="{identifier1}" style="width:100%;background-image: url('+thisUpdate.img+'); background-position: 0px 0px;background-size:cover;"> <div class="updateDets"> <div class="updatePrice">'+update+'</div> <div class="updateRating"></div> <div class="updateName">'+thisUpdate.name+'</div> <div class="updateTime">'+thisUpdate.time+' from <span class="jumpToLoc">'+thisUpdate.location+'</span></div> </div> <div class="updateButtons"> <div class="updateContactButton updateButton" data-identifier="{identifier2}" data-contact="test"> Bid</div> <div class="updateButton">Save</div> </div> </div>'
+                    );
+                }catch(Error){
+
+                }
+
+
+            }
+
+        }
+
+    });
+    } else {
+        var v = whitespell.d.getValues("$updates");
+        for(var update in v) {
+
+            var thisUpdate = v[update];
+
+            if(thisUpdate.lat !== undefined) {
+                try {
+                    createMarker(update, new google.maps.LatLng(thisUpdate.lat, thisUpdate.lng), update + ": " + thisUpdate.name, '<div class="update" id="{identifier1}" style="width:100%;background-image: url('+thisUpdate.img+'); background-position: 0px 0px;background-size:cover;"> <div class="updateDets"> <div class="updatePrice">'+update+'</div> <div class="updateRating"></div> <div class="updateName">'+thisUpdate.name+'</div> <div class="updateTime">'+thisUpdate.time+' from <span class="jumpToLoc">'+thisUpdate.location+'</span></div> </div> <div class="updateButtons"> <div class="updateContactButton updateButton" data-identifier="{identifier2}" data-contact="test"> Bid</div> <div class="updateButton">Save</div> </div> </div>'
+                    );
+                }catch(Error){
+
+                }
+
+
+            }
+
+        }
+    }
+
+    whitespell.ui.addGestures("{{componentName}}", gestures);
+
+</script>
